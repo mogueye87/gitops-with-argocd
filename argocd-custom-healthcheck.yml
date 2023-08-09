@@ -1,0 +1,22 @@
+data:
+  resource.customizations: |
+    ConfigMap:
+      health.lua: |
+        hs = {}
+        hs.status = "Healthy"
+          if obj.data.TRAINGLE_COLOR == "white" then
+            hs.status = "Degraded"
+            hs.message = "Use any color other than White"
+          end
+        return hs
+
+---
+data:
+  resource.customizations.health.ConfigMap: |
+    hs = {}
+    hs.status = "Healthy"
+      if obj.data.TRAINGLE_COLOR == "white" then
+        hs.status = "Degraded"
+        hs.message = "Use any color other than White"
+      end
+    return hs
